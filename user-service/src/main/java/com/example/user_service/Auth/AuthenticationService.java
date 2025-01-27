@@ -1,5 +1,6 @@
 package com.example.user_service.Auth;
 import com.example.user_service.Config.JwtService;
+import com.example.user_service.model.Role;
 import com.example.user_service.model.Users;
 import com.example.user_service.repository.UserRepository;
 import com.example.user_service.service.Impl.RateLimiterService;
@@ -15,10 +16,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -30,8 +32,8 @@ public class AuthenticationService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .mobile(request.getMobile())
-                .address(request.getAddress())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.USER)
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -42,7 +44,7 @@ public class AuthenticationService {
                 .maxAge(86400)
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-        return AuthenticationResponse.builder().token(jwtToken).status(200).build();
+        return AuthenticationResponse.builder().token(jwtToken).status(1).build();
     }
 
     public AuthenticationResponse login(AuthenticationRequest request, HttpServletResponse response) {
@@ -77,5 +79,6 @@ public class AuthenticationService {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return AuthenticationResponse.builder().status(404).message("User not found").build();
         }
+
     }
 }

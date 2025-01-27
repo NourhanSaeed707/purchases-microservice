@@ -5,6 +5,27 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}/:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 server:
   port: 8761
+
+
+
+
+
+#eureka.instance.hostname -> Specifies the hostname for Eureka server instance meaning ther server runs on the local machine if it set to localhost
+#eureka.client -> Configuration the Eureka client behavior
+#eureka.client.register-with-eureka -> means this service will not register itself as client in the Eureka server,Typically set to false for Eureka servers (not client).
+#eureka.client.fetch-registry: false -> indicates that this service will not fetch the list of services registered in Eureka. Again, this is because it's a Eureka server, not a client
+#eureka.client.service-url.defaultZone -> Specifies the Eureka service url where clients can register and retrieve service information.
+
+
+
+
+
+
+#eureka.instance.hostname -> Specifies the hostname for Eureka server instance meaning ther server runs on the local machine if it set to localhost
+#eureka.client -> Configuration the Eureka client behavior
+#eureka.client.register-with-eureka -> means this service will not register itself as client in the Eureka server,Typically set to false for Eureka servers (not client).
+#eureka.client.fetch-registry: false -> indicates that this service will not fetch the list of services registered in Eureka. Again, this is because it's a Eureka server, not a client
+#eureka.client.service-url.defaultZone -> Specifies the Eureka service url where clients can register and retrieve service information.
