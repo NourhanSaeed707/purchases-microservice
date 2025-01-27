@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
         <module name="gateway" />
-        <module name="discover-server" />
+        <module name="discovery-server" />
       </profile>
       <profile name="Annotation profile for user-service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -20,11 +20,15 @@
         <module name="user-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="discover-server" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="config-server" options="-parameters" />
       <module name="discover-server" options="-parameters" />
+      <module name="discovery-server" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
