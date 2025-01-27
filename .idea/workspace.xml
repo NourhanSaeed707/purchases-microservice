@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f26998b-38bb-4446-9d1c-618c1c77be39" name="Changes" comment="" />
+    <list default="true" id="2f26998b-38bb-4446-9d1c-618c1c77be39" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/config-server/src/main/resources/configurations/user-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/src/main/java/com/example/discover_server/DiscoverServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/java/com/example/discover_server/DiscoverServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discover-server/src/test/java/com/example/discover_server/DiscoverServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-server/src/test/java/com/example/discover_server/DiscoverServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/Auth/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/Auth/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,22 +40,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2sBIsfYcdMTqBUv2uQJX2djMPI4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/projects/e-commerce"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/projects/e-commerce&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.user_service.Auth" />
