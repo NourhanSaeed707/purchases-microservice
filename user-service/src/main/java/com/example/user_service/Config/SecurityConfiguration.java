@@ -25,14 +25,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable() )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
-                                "/api/v2/auth/**",
-                                "/api/email/**",
-                                "/api/sms/**",
-                                "/api/product/get/{id}",
-                                "/api/product/get-all",
-                                "/api/product-color/get/images/{productId}/{colorId}",
-                                "/api/auth/send-forget-password",
-                                "/api/auth/reset-password"
+                                "/api/v1/auth/**",
+                                "/api/email/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

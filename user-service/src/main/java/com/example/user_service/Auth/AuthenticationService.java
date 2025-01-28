@@ -44,7 +44,7 @@ public class AuthenticationService {
                 .maxAge(86400)
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-        return AuthenticationResponse.builder().token(jwtToken).status(1).build();
+        return AuthenticationResponse.builder().token(jwtToken).status(200).message("register successful").build();
     }
 
     public AuthenticationResponse login(AuthenticationRequest request, HttpServletResponse response) {
@@ -71,7 +71,7 @@ public class AuthenticationService {
                     .maxAge(86400) // 1 day
                     .build();
             response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-            return AuthenticationResponse.builder().token(jwtToken).status(200).build();
+            return AuthenticationResponse.builder().token(jwtToken).status(200).message("login successful").build();
         } catch (BadCredentialsException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return AuthenticationResponse.builder().message("Invalid email or password").status(401).build();
