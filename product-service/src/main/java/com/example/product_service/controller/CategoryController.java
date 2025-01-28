@@ -1,14 +1,11 @@
 package com.example.product_service.controller;
-
 import com.example.product_service.DTO.CategoryDTO;
-import com.example.product_service.DTO.ProductDTO;
 import com.example.product_service.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
