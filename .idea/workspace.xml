@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f26998b-38bb-4446-9d1c-618c1c77be39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/example/product_service/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/example/product_service/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/configurations/product-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/configurations/product-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/example/product_service/service/Impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/example/product_service/service/Impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,18 +34,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/purchases-micro/product-service/pom.xml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ConfigServerApplication.executor": "Run",
+    "Application.DiscoveryServerApplication.executor": "Run",
+    "Application.GatewayApplication.executor": "Run",
+    "Application.ProductServiceApplication.executor": "Run",
+    "Application.UserServiceApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/projects/purchases-micro/product-service/pom.xml"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.user_service.Auth" />
