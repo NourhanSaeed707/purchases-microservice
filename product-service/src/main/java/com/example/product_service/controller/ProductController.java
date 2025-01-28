@@ -22,7 +22,12 @@ public class ProductController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> getAll() {
+    public List<ProductDTO> getAll(@RequestHeader("Authorization") String token) {
+        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        if (user.getRole() != Role.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+        }
         return productService.getAll();
     }
 
@@ -41,19 +46,34 @@ public class ProductController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO update(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
-         return productService.update(id, productDTO);
+    public ProductDTO update(@PathVariable Long id, @RequestBody ProductDTO productDTO, @RequestHeader("Authorization") String token) {
+        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        if (user.getRole() != Role.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+        }
+        return productService.update(id, productDTO);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO getOne(@PathVariable Long id) {
+    public ProductDTO getOne(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        if (user.getRole() != Role.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+        }
         return productService.getOne(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> delete(@PathVariable Long id) {
+    public ResponseEntity<String> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        if (user.getRole() != Role.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+        }
         boolean deleted = productService.delete(id);
         if(deleted) {
             return ResponseEntity.ok("Product deleted successfully");
