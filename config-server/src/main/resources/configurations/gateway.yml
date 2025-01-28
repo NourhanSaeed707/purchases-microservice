@@ -8,14 +8,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: students
+        - id: users
           uri: http://localhost:8090
           predicates:
-            - Path=/api/v1/students/**
-        - id: schools
-          uri: http://localhost:8070
-          predicates:
-            - Path=/api/v1/schools/**
+            - Path=/api/v1/users/**
       discovery:
         locator:
           enabled: true
