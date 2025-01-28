@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -34,10 +33,8 @@ public class ProductController {
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDTO create(@RequestBody ProductDTO productDTO, @RequestHeader("Authorization") String token) {
-        System.out.println("tokeeeeeeeeen: " + token);
         ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
         Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-        System.out.println("useeeeer in product controller: " + user);
         if (user.getRole() != Role.ADMIN) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
         }
