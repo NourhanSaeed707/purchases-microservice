@@ -33,6 +33,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .mobile(request.getMobile())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .address(request.getAddress())
                 .role(request.getRole())
                 .build();
         userRepository.save(user);

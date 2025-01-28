@@ -34,6 +34,9 @@ public class Users implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (role == null) {
+            throw new IllegalStateException("User role is null");
+        }
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 

@@ -4,6 +4,8 @@ import com.example.user_service.model.Users;
 import com.example.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,5 +15,28 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UserService userService;
 
-   
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public Users update(@PathVariable("id") Long id, @RequestBody Users updatedUser){
+       return userService.update(id, updatedUser);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public Users getOne(@PathVariable("id") Long id){
+        return userService.getOne(id);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+        boolean deleted = userService.delete(id);
+        if (deleted) {
+            return ResponseEntity.ok("Deleted Successfully");
+        }
+        return ResponseEntity.ok("Something went wrong");
+    }
 }
