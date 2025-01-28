@@ -1,5 +1,6 @@
-package com.example.order_service.model;
-import jakarta.persistence.*;
+package com.example.order_service.DTO;
+
+import com.example.order_service.model.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,17 +13,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-@Table(name = "orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class OrderDTO {
     private Long userId;
     private BigDecimal totalPrice;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private List<OrderItem> orderItems;
     private String deliveryAddress;
-
 }
