@@ -1,4 +1,5 @@
 package com.example.user_service.Auth;
+import com.example.user_service.model.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class RegisterRequest {
     private String password;
     private String mobile;
     private String address;
+    private Role role;
 }
