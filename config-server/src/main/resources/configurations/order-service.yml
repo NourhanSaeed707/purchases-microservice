@@ -7,7 +7,7 @@ eureka:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/products
+    url: jdbc:postgresql://localhost:5432/orders
     username: postgres
     password: password
   jpa:
@@ -21,3 +21,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
+application:
+  config:
+    product-url: http://localhost:8070/api/v1/products

@@ -1,5 +1,7 @@
 package com.example.order_service.service.Impl;
 import com.example.order_service.DTO.OrderDTO;
+import com.example.order_service.DTO.ProductDTO;
+import com.example.order_service.client.ProductClient;
 import com.example.order_service.mapper.OrderItemMapper;
 import com.example.order_service.mapper.OrderMapper;
 import com.example.order_service.model.Order;
@@ -20,6 +22,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final OrderMapper mapper;
     private final OrderItemMapper orderItemMapper;
+    private final ProductClient productClient;
 
     @Override
     public List<OrderDTO> getAll() {
@@ -27,13 +30,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderDTO create(OrderDTO orderDTO) {
+    public OrderDTO create(OrderDTO orderDTO, String token) {
         Order order = mapper.toEntity(orderDTO);
         order.setCreatedAt(LocalDateTime.now());
         List<OrderItem> orderItems = orderDTO.getOrderItems().stream()
                 .map(orderItemDto -> {
                     OrderItem orderItem =  orderItemMapper.toEntity(orderItemDto);
-                    orderItem.setTotalPrice(orderItem.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())));
+                    ProductDTO product = productClient.getOne(orderItem.getProductId(), token);
+                    System.out.println("proooooooduct from order item loooop: " + product);
+                    orderItem.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())));
+                    orderItem.setOrder(order);
                     return orderItem;
                 }).toList();
 

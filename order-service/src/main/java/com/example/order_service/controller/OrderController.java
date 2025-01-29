@@ -38,7 +38,7 @@ public class OrderController {
         if (user.getRole() != Role.ADMIN) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
         }
-        return orderService.create(orderDTO) ;
+        return orderService.create(orderDTO, token) ;
     }
 
 }
