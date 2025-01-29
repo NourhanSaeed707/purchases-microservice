@@ -1,5 +1,4 @@
 package com.example.order_service.DTO;
-
 import com.example.order_service.model.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class OrderDTO {
+    private Long id;
     private Long userId;
     private BigDecimal totalPrice;
     private LocalDateTime createdAt;

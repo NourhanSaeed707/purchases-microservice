@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface OrderService {
     List<OrderDTO> getAll();
+
+    OrderDTO create(OrderDTO orderDTO);
 }

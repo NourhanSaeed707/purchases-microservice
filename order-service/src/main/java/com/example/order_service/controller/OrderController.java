@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +28,17 @@ public class OrderController {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
         }
         return orderService.getAll();
+    }
+
+    @PostMapping("/")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderDTO create(@RequestHeader("Authorization") String token, @RequestBody OrderDTO orderDTO) {
+        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+        if (user.getRole() != Role.ADMIN) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+        }
+        return orderService.create(orderDTO) ;
     }
 
 }

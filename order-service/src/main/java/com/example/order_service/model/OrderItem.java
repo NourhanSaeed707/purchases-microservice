@@ -20,4 +20,7 @@ public class OrderItem {
     private Long quantity;
     private BigDecimal price; // Price per unit
     private BigDecimal totalPrice; // Quantity * Price
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 }
