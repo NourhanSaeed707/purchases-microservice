@@ -38,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
                     OrderItem orderItem =  orderItemMapper.toEntity(orderItemDto);
                     ProductDTO product = productClient.getOne(orderItem.getProductId(), token);
                     System.out.println("proooooooduct from order item loooop: " + product);
+                    orderItem.setPrice(product.getPrice());
                     orderItem.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())));
                     orderItem.setOrder(order);
                     return orderItem;
