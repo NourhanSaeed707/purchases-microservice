@@ -9,6 +9,7 @@ import com.example.order_service.model.Order;
 import com.example.order_service.model.OrderItem;
 import com.example.order_service.repository.OrderRepository;
 import com.example.order_service.service.OrderService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
@@ -39,6 +40,13 @@ public class OrderServiceImpl implements OrderService {
         Order created = orderRepository.save(order);
         return mapper.toDTO(created);
     }
+
+    @Override
+    public OrderDTO getOne(String token, Long id) {
+        Order order = orderRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Order not found with id " + id));
+        return mapper.toDTO(order);
+    }
+
     private List<OrderItem> prepareOrderItemsList(List<OrderItemDTO> orderItemDTOS, Order order, String token) {
         return orderItemDTOS.stream()
                 .map(orderItemDto -> {
