@@ -11,11 +11,9 @@ import com.example.order_service.repository.OrderRepository;
 import com.example.order_service.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDTO> getAll() {
-        return List.of();
+         return orderRepository.findAll().stream().map(mapper::toDTO).toList();
     }
 
     @Override
@@ -46,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
                 .map(orderItemDto -> {
                     OrderItem orderItem =  orderItemMapper.toEntity(orderItemDto);
                     ProductDTO product = productClient.getOne(orderItem.getProductId(), token);
-                    System.out.println("proooooooduct from order item loooop: " + product);
                     orderItem.setPrice(product.getPrice());
                     orderItem.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())));
                     orderItem.setOrder(order);
