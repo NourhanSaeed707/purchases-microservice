@@ -33,14 +33,12 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDTO create(OrderDTO orderDTO, String token) {
         Order order = mapper.toEntity(orderDTO);
+        order.setCreatedAt(LocalDateTime.now());
         List<OrderItem> orderItems = prepareOrderItemsList(orderDTO.getOrderItems(), order, token);
+        order.setOrderItems(orderItems);
         BigDecimal totalPrice = orderItems.stream().map(OrderItem::getTotalPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
-        Order orderBuilder = Order.builder()
-                .createdAt(LocalDateTime.now())
-                .orderItems(orderItems)
-                .totalPrice(totalPrice)
-                .build();
-        Order created = orderRepository.save(orderBuilder);
+        order.setTotalPrice(totalPrice);
+        Order created = orderRepository.save(order);
         return mapper.toDTO(created);
     }
     private List<OrderItem> prepareOrderItemsList(List<OrderItemDTO> orderItemDTOS, Order order, String token) {
