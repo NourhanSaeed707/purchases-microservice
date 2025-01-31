@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2f26998b-38bb-4446-9d1c-618c1c77be39" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/DTO/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/DTO/OrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/mapper/OrderItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/mapper/OrderItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/mapper/OrderMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/Impl/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,20 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ConfigServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.DiscoveryServerApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OrderServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProductServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/projects/purchases-micro&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ConfigServerApplication.executor": "Run",
+    "Application.DiscoveryServerApplication.executor": "Run",
+    "Application.GatewayApplication.executor": "Run",
+    "Application.OrderServiceApplication.executor": "Run",
+    "Application.ProductServiceApplication.executor": "Run",
+    "Application.UserServiceApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/projects/e-commerce-microservice"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.order_service.model" />

@@ -18,6 +18,6 @@ public class OrderDTO {
     private BigDecimal totalPrice;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<OrderItem> orderItems;
+    private List<OrderItemDTO> orderItems;
     private String deliveryAddress;
 }
