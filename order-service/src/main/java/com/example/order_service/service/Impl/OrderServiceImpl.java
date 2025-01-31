@@ -47,6 +47,13 @@ public class OrderServiceImpl implements OrderService {
         return mapper.toDTO(order);
     }
 
+    @Override
+    public void delete(Long id) {
+        Order order = orderRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Order not found with id " + id));
+        orderRepository.delete(order);
+
+    }
+
     private List<OrderItem> prepareOrderItemsList(List<OrderItemDTO> orderItemDTOS, Order order, String token) {
         return orderItemDTOS.stream()
                 .map(orderItemDto -> {
