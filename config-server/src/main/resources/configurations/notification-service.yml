@@ -13,3 +13,22 @@ spring:
       port: 27017
       database: notifications
       authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-server: localhost:9092
+      group-id: notification-group
+  mail:
+    host: smtp.example.com
+    port: 587
+    username: wtest1284@gmail.com
+    password: lhzw tjtx qwlk chee
+    properties:
+      mail:
+        smtp:
+          trust: '*'
+        auth: true
+        starttls:
+          enabled: true
+
+server:
+  port: 8042
