@@ -18,37 +18,34 @@ public class CategoryController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public List<CategoryDTO> getAll(@RequestHeader("Authorization") String token) {
+    public List<CategoryDTO> getAll() {
         return categoryService.getAll();
     }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO categoryDTO, @RequestHeader("X-User-Roles") String roles) {
-        if (!roles.contains("USER")) {
-            throw new RuntimeException("Access denid");
-        }
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO categoryDTO) {
         return ResponseEntity.ok(categoryService.create(categoryDTO));
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO, @RequestHeader("Authorization") String token) {
+    public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO) {
         return categoryService.update(id, categoryDTO);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CategoryDTO getOne(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+    public CategoryDTO getOne(@PathVariable Long id) {
         return categoryService.getOne(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<String> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         boolean deleted = categoryService.delete(id);
         if(deleted) {
             return ResponseEntity.ok("Product deleted successfully");

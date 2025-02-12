@@ -18,34 +18,34 @@ public class ProductController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> getAll(@RequestHeader("Authorization") String token) {
+    public List<ProductDTO> getAll() {
         return productService.getAll();
     }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ProductDTO create(@RequestBody ProductDTO productDTO, @RequestHeader("Authorization") String token) {
+    public ProductDTO create(@RequestBody ProductDTO productDTO) {
         return productService.create(productDTO);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ProductDTO update(@PathVariable Long id, @RequestBody ProductDTO productDTO, @RequestHeader("Authorization") String token) {
+    public ProductDTO update(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
         return productService.update(id, productDTO);
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO getOne(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+    public ProductDTO getOne(@PathVariable Long id) {
         return productService.getOne(id);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('ADMIN')")
-    public ResponseEntity<String> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<String> delete(@PathVariable Long id) {
         boolean deleted = productService.delete(id);
         if(deleted) {
             return ResponseEntity.ok("Product deleted successfully");
