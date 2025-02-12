@@ -18,4 +18,4 @@ management:
 application:
   config:
     product-url: http://localhost:8222/api/v1/products
-    user-service-url: http://localhost:8222/api/v1/auth/user
+    user-service-url: http://localhost:8222/api/v1/users

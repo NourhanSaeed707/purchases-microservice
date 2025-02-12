@@ -127,9 +127,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.GatewayApplication" />
         <item itemvalue="Application.DiscoveryServerApplication" />
+        <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="Application.UserServiceApplication" />
       </list>
