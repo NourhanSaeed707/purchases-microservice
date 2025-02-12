@@ -7,4 +7,6 @@ public interface UserService {
     Users getOne(Long id);
 
     boolean delete(Long id);
+
+    Users getUserByEmail(String email);
 }

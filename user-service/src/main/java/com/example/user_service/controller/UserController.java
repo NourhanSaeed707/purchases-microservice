@@ -39,4 +39,11 @@ public class UserController {
         }
         return ResponseEntity.ok("Something went wrong");
     }
+
+    @GetMapping("/get-by-email/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public Users getUserByEmail(@PathVariable("email") String email) {
+        return userService.getUserByEmail(email);
+    }
 }
