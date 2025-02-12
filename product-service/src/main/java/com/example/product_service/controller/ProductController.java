@@ -21,23 +21,25 @@ public class ProductController {
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
+//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public List<ProductDTO> getAll(@RequestHeader("Authorization") String token) {
-        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
-        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-        if (user.getRole() != Role.ADMIN) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
-        }
+//        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+//        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+//        if (user.getRole() != Role.ADMIN) {
+//            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+//        }
         return productService.getAll();
     }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
+//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ProductDTO create(@RequestBody ProductDTO productDTO, @RequestHeader("Authorization") String token) {
-        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
-        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-        if (user.getRole() != Role.ADMIN) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
-        }
+//        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+//        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+//        if (user.getRole() != Role.ADMIN) {
+//            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+//        }
         return productService.create(productDTO);
     }
 

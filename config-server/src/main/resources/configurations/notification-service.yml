@@ -29,6 +29,8 @@ spring:
         auth: true
         starttls:
           enabled: true
-
 server:
   port: 8042
+application:
+  config:
+    user-service-url: http://localhost:8070/api/v1/auth/user

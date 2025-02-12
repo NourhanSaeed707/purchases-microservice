@@ -19,29 +19,28 @@ public class CategoryController {
     private final CategoryService categoryService;
     private final UserClient userClient;
 
-    @GetMapping("/")
+    @GetMapping("/public/")
     @ResponseStatus(HttpStatus.OK)
     public List<CategoryDTO> getAll(@RequestHeader("Authorization") String token) {
-        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
-        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-        if (user.getRole() != Role.ADMIN) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
-        }
+//        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
+//        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+//        if (user.getRole() != Role.ADMIN) {
+//            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+//        }
         return categoryService.getAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/admin/")
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoryDTO create(@RequestBody CategoryDTO categoryDTO, @RequestHeader("Authorization") String token) {
-        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
-        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-        if (user.getRole() != Role.ADMIN) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
+    public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO categoryDTO, @RequestHeader("X-User-Roles") String roles) {
+        System.out.println("insiiiiiide create new categoooooory");
+        if (!roles.contains("USER")) {
+            throw new RuntimeException("Access denid");
         }
-        return categoryService.create(categoryDTO);
+        return ResponseEntity.ok(categoryService.create(categoryDTO));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO, @RequestHeader("Authorization") String token) {
         ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);

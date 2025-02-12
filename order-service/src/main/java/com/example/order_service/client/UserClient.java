@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import java.util.Optional;
 
-@FeignClient(name = "user-service")
+@FeignClient(name = "user-service", url = "${application.config.user-service-url}")
 public interface UserClient {
-    @GetMapping("/api/v1/auth/user")
+    @GetMapping("/")
     ResponseEntity<Optional<Users>> getUserInfo(@RequestHeader("Authorization") String token);
 }

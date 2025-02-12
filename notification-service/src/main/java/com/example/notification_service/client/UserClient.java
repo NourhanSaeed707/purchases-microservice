@@ -1,5 +1,5 @@
-package com.example.product_service.client;
-import com.example.product_service.DTO.Users;
+package com.example.notification_service.client;
+import com.example.notification_service.DTO.Users;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
