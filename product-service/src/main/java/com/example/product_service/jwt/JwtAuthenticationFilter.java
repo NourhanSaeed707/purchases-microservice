@@ -33,9 +33,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
                 Claims claims = jwtUtil.getClaims(token.substring(7));
                 Users user = userClient.getUserByEmail(claims.getSubject(), token);
-
                 SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().toString());
-
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         claims.getSubject(), null, Collections.singleton(authority));
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
