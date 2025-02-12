@@ -1,6 +1,5 @@
 package com.example.order_service.controller;
 import com.example.order_service.DTO.OrderDTO;
-import com.example.order_service.client.UserClient;
 import com.example.order_service.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,11 +11,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
-    private final UserClient userClient;
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderDTO> getAll(@RequestHeader("Authorization") String token) {
+    public List<OrderDTO> getAll() {
         return orderService.getAll();
     }
 
@@ -35,8 +33,7 @@ public class OrderController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-
-    public void delete (@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
+    public void delete ( @PathVariable("id") Long id) {
         orderService.delete(id);
     }
 
