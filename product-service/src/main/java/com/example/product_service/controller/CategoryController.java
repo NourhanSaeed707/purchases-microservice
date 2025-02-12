@@ -7,6 +7,7 @@ import com.example.product_service.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
@@ -19,29 +20,25 @@ public class CategoryController {
     private final CategoryService categoryService;
     private final UserClient userClient;
 
-    @GetMapping("/public/")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public List<CategoryDTO> getAll(@RequestHeader("Authorization") String token) {
-//        ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
-//        Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
-//        if (user.getRole() != Role.ADMIN) {
-//            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You do not have permission to access this resource");
-//        }
         return categoryService.getAll();
     }
 
-    @PostMapping("/admin/")
+    @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO categoryDTO, @RequestHeader("X-User-Roles") String roles) {
-        System.out.println("insiiiiiide create new categoooooory");
         if (!roles.contains("USER")) {
             throw new RuntimeException("Access denid");
         }
         return ResponseEntity.ok(categoryService.create(categoryDTO));
     }
 
-    @PutMapping("/admin/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public CategoryDTO update(@PathVariable Long id, @RequestBody CategoryDTO categoryDTO, @RequestHeader("Authorization") String token) {
         ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
         Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
@@ -64,6 +61,7 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<String> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
         ResponseEntity<Optional<Users>> userResponse = userClient.getUserInfo(token);
         Users user = userResponse.getBody().orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));

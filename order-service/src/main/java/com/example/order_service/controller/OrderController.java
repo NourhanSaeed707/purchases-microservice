@@ -50,6 +50,7 @@ public class OrderController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+
     public void delete (@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
         orderService.delete(id);
     }
