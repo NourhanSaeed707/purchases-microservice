@@ -2,36 +2,18 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: auth
-          uri: http://localhost:8060
-          predicates:
-            - Path=/api/v1/auth/**
-        - id: users
-          uri: http://localhost:8060
+        - id: user-service
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/api/v1/users/**
-        - id: products
-          uri: http://localhost:8070
+        - id: auth-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/auth/**
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
           predicates:
             - Path=/api/v1/products/**
-          filters:
-            - AuthenticationFilter
-            - AddRequestHeader=X-CSRF-TOKEN, "#{request.headers.get('X-CSRF-TOKEN')}"
-        - id: categories
-          uri: http://localhost:8070
-          predicates:
-            - Path=/api/v1/categories/**
-          filters:
-            - AuthenticationFilter
-            - AddRequestHeader=X-CSRF-TOKEN, "#{request.headers.get('X-CSRF-TOKEN')}"
-        - id: orders
-          uri: http://localhost:8080
-          predicates:
-            - Path=/api/v1/orders/**
-        - id: notifications
-          uri: http://localhost:8042
-          predicates:
-            - Path=/api/v1/notifications/**
       discovery:
         locator:
           enabled: true
