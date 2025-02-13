@@ -6,9 +6,9 @@ import java.util.List;
 public interface OrderService {
     List<OrderDTO> getAll();
 
-    OrderDTO create(OrderDTO orderDTO, String token);
+    OrderDTO create(OrderDTO orderDTO);
 
-    OrderDTO getOne(String token, Long id);
+    OrderDTO getOne( Long id);
 
     void delete(Long id);
 }

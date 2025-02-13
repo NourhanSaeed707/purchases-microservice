@@ -17,6 +17,12 @@ spring:
     consumer:
       bootstrap-server: localhost:9092
       group-id: notification-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: '*'
+
   mail:
     host: smtp.example.com
     port: 587

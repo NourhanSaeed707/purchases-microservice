@@ -20,14 +20,14 @@ public class OrderController {
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public OrderDTO create(@RequestHeader("Authorization") String token, @RequestBody OrderDTO orderDTO) {
-        return orderService.create(orderDTO, token) ;
+    public OrderDTO create( @RequestBody OrderDTO orderDTO) {
+        return orderService.create(orderDTO ) ;
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public OrderDTO getOne(@RequestHeader("Authorization") String token, @PathVariable("id") Long id) {
-        return orderService.getOne(token, id);
+    public OrderDTO getOne(@PathVariable("id") Long id) {
+        return orderService.getOne(id);
 
     }
 

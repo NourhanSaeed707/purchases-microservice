@@ -1,5 +1,6 @@
 package com.example.user_service.controller;
 
+import com.example.user_service.dto.UserDTO;
 import com.example.user_service.model.Users;
 import com.example.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,13 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public Users getOne(@PathVariable("id") Long id){
         return userService.getOne(id);
+    }
+
+    @GetMapping("/get-user-by-id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public UserDTO getUserById(@PathVariable("id") Long id){
+        return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")

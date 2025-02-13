@@ -19,8 +19,4 @@ public class Notifications {
     private Long userId;
     @NotNull
     private Long orderId;
-    @NotNull
-    private String subject;
-    @NotNull
-    private String message;
 }

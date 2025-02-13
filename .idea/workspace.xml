@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f26998b-38bb-4446-9d1c-618c1c77be39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/configurations/gateway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/configurations/gateway.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/DTO/NotificationDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/DTO/OrderConfirmation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/DTO/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/DTO/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/kafka/NotificationConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/DTO/OrderEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/kafka/OrderProducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/configurations/notification-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/configurations/notification-service.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config-server/src/main/resources/configurations/order-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-server/src/main/resources/configurations/order-service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/NotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/NotificationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/client/UserClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/client/UserClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/email/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/kafka/KafkaConsumerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/model/Notifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/example/notification_service/model/Notifications.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/client/ProductClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/client/ProductClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/Impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/example/order_service/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/service/Impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/service/Impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/example/user_service/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +60,14 @@
     "Application.ConfigServerApplication.executor": "Run",
     "Application.DiscoveryServerApplication.executor": "Run",
     "Application.GatewayApplication.executor": "Run",
+    "Application.NotificationServiceApplication.executor": "Run",
     "Application.OrderServiceApplication.executor": "Run",
     "Application.ProductServiceApplication.executor": "Run",
     "Application.UserServiceApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/projects/purchases-micro/order-service/src/main/java/com/example/order_service/jwt"
+    "last_opened_file_path": "D:/projects/e-commerce"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -59,13 +82,13 @@
       <recent name="D:\projects\purchases-micro\order-service\src\main\java\com\example\order_service\config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OrderServiceApplication">
-    <configuration name="DiscoveryServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.discovery_server.DiscoveryServerApplication" />
-      <module name="discovery-server" />
+  <component name="RunManager" selected="Application.NotificationServiceApplication">
+    <configuration name="GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.gateway.GatewayApplication" />
+      <module name="gateway" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.discovery_server.*" />
+          <option name="PATTERN" value="com.example.gateway.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -73,12 +96,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.gateway.GatewayApplication" />
-      <module name="gateway" />
+    <configuration name="NotificationServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.notification_service.NotificationServiceApplication" />
+      <module name="notification-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.gateway.*" />
+          <option name="PATTERN" value="com.example.notification_service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GatewayApplication" />
-        <item itemvalue="Application.DiscoveryServerApplication" />
+        <item itemvalue="Application.NotificationServiceApplication" />
         <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="Application.UserServiceApplication" />
+        <item itemvalue="Application.GatewayApplication" />
       </list>
     </recent_temporary>
   </component>

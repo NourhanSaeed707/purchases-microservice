@@ -1,4 +1,5 @@
 package com.example.user_service.service;
+import com.example.user_service.dto.UserDTO;
 import com.example.user_service.model.Users;
 
 public interface UserService {
@@ -9,4 +10,6 @@ public interface UserService {
     boolean delete(Long id);
 
     Users getUserByEmail(String email);
+
+    UserDTO getUserById(Long id);
 }
