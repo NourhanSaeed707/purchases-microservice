@@ -22,7 +22,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties:
         spring.json.trusted.packages: '*'
-
+        spring.json.type.mapping: event:com.example.order_service.DTO.OrderEvent
   mail:
     host: smtp.example.com
     port: 587
@@ -39,4 +39,4 @@ server:
   port: 8042
 application:
   config:
-    user-service-url: http://localhost:8070/api/v1/auth/user
+    user-service-url: http://localhost:8222/api/v1/users

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EmailService {
     private  final JavaMailSender mailSender;
-    private final UserClient userClient;
 
     public void sendOrderConfirmationEmail(OrderConfirmation orderConfirmation, UserDTO userDTO) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();

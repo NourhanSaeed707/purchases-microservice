@@ -1,11 +1,10 @@
 package com.example.notification_service;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@FeignClient
+@EnableFeignClients
 public class NotificationServiceApplication {
 
 	public static void main(String[] args) {
