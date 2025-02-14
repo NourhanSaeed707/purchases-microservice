@@ -14,6 +14,8 @@ import com.example.order_service.service.OrderService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,7 +28,6 @@ public class OrderServiceImpl implements OrderService {
     private final OrderItemMapper orderItemMapper;
     private final ProductClient productClient;
     private final OrderProducer orderProducer;
-
 
     @Override
     public List<OrderDTO> getAll() {
@@ -42,10 +43,14 @@ public class OrderServiceImpl implements OrderService {
         BigDecimal totalPrice = orderItems.stream().map(OrderItem::getTotalPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
         order.setTotalPrice(totalPrice);
         Order created = orderRepository.save(order);
+        OrderDTO createdDto = mapper.toDTO(created);
+        System.out.println("order creaated: " + createdDto);
         orderProducer.sendNotification(
                 new OrderConfirmation(
-                        created.getUserId(),
-                        created.getId()
+                        createdDto.getUserId(),
+                        createdDto.getTotalPrice(),
+                        createdDto.getId(),
+                        createdDto.getOrderItems()
                 )
         );
         return mapper.toDTO(created);
@@ -65,14 +70,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private List<OrderItem> prepareOrderItemsList(List<OrderItemDTO> orderItemDTOS, Order order) {
+        String token = getTokenFromRequest();
+        System.out.println("tokeeeeeeeeen: " + token);
         return orderItemDTOS.stream()
                 .map(orderItemDto -> {
                     OrderItem orderItem =  orderItemMapper.toEntity(orderItemDto);
-                    ProductDTO product = productClient.getOne(orderItem.getProductId());
+                    ProductDTO product = productClient.getOne(orderItem.getProductId(), "Bearer " + token);
                     orderItem.setPrice(product.getPrice());
                     orderItem.setTotalPrice(product.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())));
                     orderItem.setOrder(order);
                     return orderItem;
                 }).toList();
+    }
+
+    private String getTokenFromRequest() {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (attributes != null) {
+            String token = attributes.getRequest().getHeader("Authorization");
+            if (token != null && token.startsWith("Bearer ")) {
+                return token.substring(7); // Remove "Bearer " prefix
+            }
+        }
+        return null;
     }
 }

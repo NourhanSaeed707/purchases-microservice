@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 public class OrderProducer {
     private final KafkaTemplate<String, OrderConfirmation> kafkaTemplate;
 
-    public void sendNotification(OrderConfirmation event) {
-        kafkaTemplate.send("order-topic", event);
+    public void sendNotification(OrderConfirmation orderConfirmation) {
+        System.out.println("eveeeeeeeeent: " + orderConfirmation);
+        kafkaTemplate.send("order-topic", orderConfirmation);
     }
 
 }

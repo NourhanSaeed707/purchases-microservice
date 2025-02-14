@@ -1,5 +1,4 @@
 package com.example.notification_service.DTO;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,5 +14,5 @@ public class OrderConfirmation {
     private Long orderId;
     private BigDecimal totalAmount;
     private Long userId;
-    List<ProductDTO> products;
+    List<OrderItemDTO> orderItemDTOS;
 }

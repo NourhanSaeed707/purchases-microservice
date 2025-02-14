@@ -1,5 +1,6 @@
 package com.example.notification_service.email;
 import com.example.notification_service.DTO.OrderConfirmation;
+import com.example.notification_service.DTO.OrderItemDTO;
 import com.example.notification_service.DTO.ProductDTO;
 import com.example.notification_service.DTO.UserDTO;
 import com.example.notification_service.client.UserClient;
@@ -26,11 +27,11 @@ public class EmailService {
         productsTable.append("<table border='1' style='border-collapse:collapse; width:100%;'>")
                 .append("<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>");
 
-        for (ProductDTO product : orderConfirmation.getProducts()) {
+        for (OrderItemDTO orderItemDTO : orderConfirmation.getOrderItemDTOS()) {
             productsTable.append("<tr>")
-                    .append("<td>").append(product.getName()).append("</td>")
-                    .append("<td>").append(product.getQuantity()).append("</td>")
-                    .append("<td>$").append(product.getPrice()).append("</td>")
+//                    .append("<td>").append(orderItemDTO.getName()).append("</td>")
+                    .append("<td>").append(orderItemDTO.getQuantity()).append("</td>")
+                    .append("<td>$").append(orderItemDTO.getPrice()).append("</td>")
                     .append("</tr>");
         }
         productsTable.append("</table>");

@@ -18,12 +18,14 @@ spring:
       bootstrap-servers: localhost:9092  # Kafka broker address (change to match your Kafka broker)
       group-id: notification-service-group
       auto-offset-reset: earliest  # Starts reading from the earliest message if no offset is committed
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     listener:
       concurrency: 3  # Optional: You can scale the number of listeners based on your needs
       missing-topics-fatal: false  # If the topic is missing, Kafka won't throw an error
     properties:
-      spring.kafka.consumer.key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      spring.kafka.consumer.value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      spring.json.trusted.packages: '*'
+      spring.json.type.mapping: orderConfirmation:com.example.notification_service.DTO.OrderConfirmation
   mail:
     host: smtp.example.com
     port: 587
