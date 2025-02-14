@@ -32,7 +32,7 @@ public class NotificationConsumer {
                         .build()
         );
         UserDTO userDTO = userClient.getUserById(orderConfirmation.getUserId());
-        emailService.sendOrderConfirmationEmail(orderConfirmation, userDTO);
+//        emailService.sendOrderConfirmationEmail(orderConfirmation, userDTO);
 
     }
 

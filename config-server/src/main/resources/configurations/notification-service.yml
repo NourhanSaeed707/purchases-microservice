@@ -11,8 +11,8 @@ spring:
       password: password
       host: localhost
       port: 27017
-      database: notifications
-      authentication-database: admin
+      database: notifications_db
+      authentication-database: notifications_db
   kafka:
     consumer:
       bootstrap-servers: localhost:9092  # Kafka broker address (change to match your Kafka broker)
