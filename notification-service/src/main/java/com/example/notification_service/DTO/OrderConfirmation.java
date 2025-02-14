@@ -15,4 +15,5 @@ public class OrderConfirmation {
     private BigDecimal totalAmount;
     private Long userId;
     List<OrderItemDTO> orderItemDTOS;
+    private String token;
 }

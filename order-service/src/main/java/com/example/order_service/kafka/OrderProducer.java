@@ -10,8 +10,7 @@ public class OrderProducer {
     private final KafkaTemplate<String, OrderConfirmation> kafkaTemplate;
 
     public void sendNotification(OrderConfirmation orderConfirmation) {
-        System.out.println("eveeeeeeeeent: " + orderConfirmation);
+        System.out.println("ordeeer confirmaaation: " + orderConfirmation);
         kafkaTemplate.send("order-topic", orderConfirmation);
     }
-
 }

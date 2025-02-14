@@ -1,5 +1,4 @@
 package com.example.user_service.controller;
-
 import com.example.user_service.dto.UserDTO;
 import com.example.user_service.model.Users;
 import com.example.user_service.service.UserService;
@@ -32,7 +31,9 @@ public class UserController {
 
     @GetMapping("/get-user-by-id/{id}")
     @ResponseStatus(HttpStatus.OK)
+//    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public UserDTO getUserById(@PathVariable("id") Long id){
+        System.out.println("insiiiide get user by id: " + id);
         return userService.getUserById(id);
     }
 

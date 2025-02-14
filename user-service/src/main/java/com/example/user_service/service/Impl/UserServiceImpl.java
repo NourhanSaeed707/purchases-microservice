@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserById(Long id) {
         Users user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found with id " + id));
+        System.out.println("user by id : " + user);
         return UserDTO.builder().
                 firstName(user.getFirstName())
                 .lastName(user.getLastName())

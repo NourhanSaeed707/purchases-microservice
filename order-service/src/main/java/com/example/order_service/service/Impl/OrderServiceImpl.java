@@ -36,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO create(OrderDTO orderDTO) {
+        String token = getTokenFromRequest();
         Order order = mapper.toEntity(orderDTO);
         order.setCreatedAt(LocalDateTime.now());
         List<OrderItem> orderItems = prepareOrderItemsList(orderDTO.getOrderItems(), order);
@@ -46,13 +47,15 @@ public class OrderServiceImpl implements OrderService {
         OrderDTO createdDto = mapper.toDTO(created);
         System.out.println("order creaated: " + createdDto);
         orderProducer.sendNotification(
-                new OrderConfirmation(
-                        createdDto.getUserId(),
-                        createdDto.getTotalPrice(),
-                        createdDto.getId(),
-                        createdDto.getOrderItems()
-                )
+                OrderConfirmation.builder()
+                        .orderId(createdDto.getId())
+                        .userId(createdDto.getUserId())
+                        .orderItemDTOS(createdDto.getOrderItems())
+                        .totalAmount(createdDto.getTotalPrice())
+                        .token(token)
+                        .build()
         );
+
         return mapper.toDTO(created);
     }
 
