@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Data
-@Document(collation = "notifications")
+@Document(collection = "notifications")
 public class Notifications {
     @Id
-    private Long id;
+    private String id;
     private NotificationType type;
     private LocalDateTime createdAt;
     @NotNull
