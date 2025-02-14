@@ -3,7 +3,7 @@ import com.example.notification_service.DTO.OrderConfirmation;
 import com.example.notification_service.DTO.OrderItemDTO;
 import com.example.notification_service.DTO.ProductDTO;
 import com.example.notification_service.DTO.UserDTO;
-import com.example.notification_service.client.UserClient;
+import com.example.notification_service.client.ProductClient;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class EmailService {
     private  final JavaMailSender mailSender;
+    private final ProductClient productClient;
 
     public void sendOrderConfirmationEmail(OrderConfirmation orderConfirmation, UserDTO userDTO) throws MessagingException {
         System.out.println("insiiiide seeend emaaail");
@@ -28,8 +29,9 @@ public class EmailService {
                 .append("<tr><th>Product Name</th><th>Quantity</th><th>Price</th></tr>");
 
         for (OrderItemDTO orderItemDTO : orderConfirmation.getOrderItemDTOS()) {
+            ProductDTO productDTO = productClient.getOne(orderItemDTO.getProductId(), "Bearer " + orderConfirmation.getToken());
             productsTable.append("<tr>")
-//                    .append("<td>").append(orderItemDTO.getName()).append("</td>")
+                    .append("<td>").append(productDTO.getName()).append("</td>")
                     .append("<td>").append(orderItemDTO.getQuantity()).append("</td>")
                     .append("<td>$").append(orderItemDTO.getPrice()).append("</td>")
                     .append("</tr>");

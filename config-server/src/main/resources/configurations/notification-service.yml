@@ -26,20 +26,25 @@ spring:
     properties:
       spring.json.trusted.packages: '*'
       spring.json.type.mapping: orderConfirmation:com.example.notification_service.DTO.OrderConfirmation
+
   mail:
-    host: smtp.example.com
+    host: smtp.gmail.com
     port: 587
     username: wtest1284@gmail.com
     password: lhzw tjtx qwlk chee
     properties:
       mail:
         smtp:
-          trust: '*'
-        auth: true
-        starttls:
-          enabled: true
+          auth: true
+          starttls:
+            enable: true  # Correctly enable STARTTLS
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
 server:
   port: 8042
 application:
   config:
     user-service-url: http://localhost:8222/api/v1/users
+    product-url: http://localhost:8222/api/v1/products
