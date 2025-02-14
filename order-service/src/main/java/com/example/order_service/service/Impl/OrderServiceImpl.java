@@ -1,6 +1,6 @@
 package com.example.order_service.service.Impl;
 import com.example.order_service.DTO.OrderDTO;
-import com.example.order_service.DTO.OrderEvent;
+import com.example.order_service.DTO.OrderConfirmation;
 import com.example.order_service.DTO.OrderItemDTO;
 import com.example.order_service.DTO.ProductDTO;
 import com.example.order_service.client.ProductClient;
@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
         order.setTotalPrice(totalPrice);
         Order created = orderRepository.save(order);
         orderProducer.sendNotification(
-                new OrderEvent(
+                new OrderConfirmation(
                         created.getUserId(),
                         created.getId()
                 )

@@ -4,12 +4,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderEvent {
-    private Long userId;
+public class OrderConfirmation {
     private Long orderId;
-
+    private BigDecimal totalAmount;
+    private Long userId;
+    List<ProductDTO> products;
 }

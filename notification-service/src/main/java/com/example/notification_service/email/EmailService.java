@@ -16,6 +16,7 @@ public class EmailService {
     private  final JavaMailSender mailSender;
 
     public void sendOrderConfirmationEmail(OrderConfirmation orderConfirmation, UserDTO userDTO) throws MessagingException {
+        System.out.println("insiiiide seeend emaaail");
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
         helper.setFrom("nourhansaeed707@gmail.com");

@@ -22,6 +22,7 @@ public class NotificationConsumer {
 
     @KafkaListener(topics = "order-topic")
     public void consumeOrderConfirmation(OrderConfirmation orderConfirmation) throws MessagingException {
+        System.out.println("insiiiide notificaaation consumer");
         notificationRepository.save(
                 Notifications.builder()
                         .type(NotificationType.ORDER_CONFIRMATION)
