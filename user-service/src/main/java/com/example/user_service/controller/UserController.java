@@ -33,7 +33,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
 //    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public UserDTO getUserById(@PathVariable("id") Long id){
-        System.out.println("insiiiide get user by id: " + id);
         return userService.getUserById(id);
     }
 

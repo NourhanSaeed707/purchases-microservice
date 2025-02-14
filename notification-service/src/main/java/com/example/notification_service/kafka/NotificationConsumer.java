@@ -24,10 +24,7 @@ public class NotificationConsumer {
 
     @KafkaListener(topics = "order-topic")
     public void consumeOrderConfirmation(OrderConfirmation orderConfirmation) throws MessagingException {
-        System.out.println("insiiiide notificaaation consumer: " + orderConfirmation);
-//        String token = notificationService.getTokenFromRequest();
         String token = orderConfirmation.getToken();
-        System.out.println("tokeeeeeeen: " + token);
         notificationRepository.save(
                 Notifications.builder()
                         .type(NotificationType.ORDER_CONFIRMATION)
@@ -36,9 +33,7 @@ public class NotificationConsumer {
                         .userId(orderConfirmation.getUserId())
                         .build()
         );
-        System.out.println("useeeeeeer id: " + orderConfirmation.getUserId());
         UserDTO userDTO = userClient.getUserById(orderConfirmation.getUserId(), "Bearer " + token);
-        System.out.println("useeeeeeeer after return: " + userDTO);
         emailService.sendOrderConfirmationEmail(orderConfirmation, userDTO);
     }
 }

@@ -1,5 +1,4 @@
 package com.example.user_service.service.Impl;
-
 import com.example.user_service.dto.UserDTO;
 import com.example.user_service.model.Users;
 import com.example.user_service.repository.UserRepository;
@@ -55,7 +54,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO getUserById(Long id) {
         Users user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("user not found with id " + id));
-        System.out.println("user by id : " + user);
         return UserDTO.builder().
                 firstName(user.getFirstName())
                 .lastName(user.getLastName())

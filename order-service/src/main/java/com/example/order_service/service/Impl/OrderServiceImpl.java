@@ -45,7 +45,6 @@ public class OrderServiceImpl implements OrderService {
         order.setTotalPrice(totalPrice);
         Order created = orderRepository.save(order);
         OrderDTO createdDto = mapper.toDTO(created);
-        System.out.println("order creaated: " + createdDto);
         orderProducer.sendNotification(
                 OrderConfirmation.builder()
                         .orderId(createdDto.getId())
@@ -74,7 +73,6 @@ public class OrderServiceImpl implements OrderService {
 
     private List<OrderItem> prepareOrderItemsList(List<OrderItemDTO> orderItemDTOS, Order order) {
         String token = getTokenFromRequest();
-        System.out.println("tokeeeeeeeeen: " + token);
         return orderItemDTOS.stream()
                 .map(orderItemDto -> {
                     OrderItem orderItem =  orderItemMapper.toEntity(orderItemDto);
